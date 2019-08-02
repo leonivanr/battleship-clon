@@ -1,0 +1,442 @@
+:root {
+    --main-bg-color: #358A70;
+    --sec-bg-color: #77BF98;
+    --main-shadow: #0F2820;
+    --text-color: #EBF0D9;
+}
+
+body,
+html {
+    background-color: var(--sec-bg-color) !important;
+    width: 100%;
+    height: 100%;
+    font-family: 'Oswald', sans-serif !important;
+}
+/*//////////////////////////*/
+/* LOADER*/
+/*//////////////////////////*/
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+    background: url(../img/loading.gif) center no-repeat var(--sec-bg-color);
+    background-size: 150px 150px;
+}
+/*//////////////////////////*/
+/* CONTENEDOR*/
+/*//////////////////////////*/
+.pages {
+    position: relative;
+}
+.pages>div {
+    display: none;
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+
+.pages>div.activo {
+    display: block !important;
+}
+.in, .out {
+    animation-timing-function: ease-in-out;
+    --webkit-animation-timing-function: ease-in-out;
+    animation-duration: 300ms;
+    --webkit-animation-duration: 500ms;
+}
+.fade.in {
+    --webkit-animation-name: fade-in;
+    animation-name: fade-in;
+    z-index: 10;
+}
+.fade.out {
+    z-index: 0;
+}
+@keyframes fade-in {
+    from { opacity: 0;}
+    to { opacity : 1;}
+}
+
+.nav-activo {
+    display: block !important;
+}
+
+.index-pd {
+    padding-top: 56px !important;
+}
+
+.index-mg {
+    margin-top: 56px !important;
+}
+
+/*//////////////////////////*/
+/* TOP NAV BAR */
+/*//////////////////////////*/
+.m-nav {
+    margin-bottom: 15vh !important;
+}
+.p-nav {
+    padding-bottom: 15vh !important;
+}
+.navbar {
+    width: 100%;
+    padding-left: 7.5%; 
+    padding-right: 7.5%;
+    background-color: var(--main-bg-color);
+    box-shadow: 1px 1px 5px 0px rgba(15, 40, 32, 0.75);
+}
+.nav-container {
+    width: 85%; 
+}
+.sticky-off {
+    top: -56px !important;
+}
+
+.nav-logo {
+    height: 7vh;
+}
+.hide {
+    display:none;
+}
+/*//////////////////////////*/
+/* MENU INICIO*/
+/*//////////////////////////*/
+.main {
+    height: 90vh;
+    width: 100vw;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.main-item {
+    background-color: var(--main-bg-color) !important;
+    height: 15vh;
+    width: 85% !important;
+    text-indent: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0px 6px 10px -3px rgba(0, 0, 0, 0.75);
+}
+
+.main-img {
+    height: 15vh;
+    float: right;
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+h3 {
+    float: left;
+    margin: auto;
+    font-size: 1.5em;
+    line-height: 15vh;
+    text-decoration: none;
+    color: #EBF0D9;
+}
+
+.bg-main {
+    background-color: var(--main-bg-color);
+}
+/*//////////////////////////*/
+/* BARRA DE NAVAGACIÓN FOOTER */
+/*//////////////////////////*/
+
+.footer-nav {
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    box-shadow: -1px -1px 5px 0px rgba(15, 40, 32, 0.75);
+}
+
+.footer-nav-item {
+    background-color: #358A70;
+    width: 25%;
+    height: 10vh;
+}
+
+.item {
+    height: 5vh;
+}
+
+/*//////////////////////////*/
+/* TABLA POSICIONES */
+/*//////////////////////////*/
+table.tabla-puntos td,
+table.tabla-puntos th {
+    border-top: 1px solid var(--main-bg-color);
+    padding: 3px 2px;
+}
+
+table.tabla-puntos tbody td {
+    font-size: 1em;
+    line-height: 2em;
+    vertical-align: middle;
+}
+
+table.tabla-puntos thead {
+    background: var(--main-bg-color);
+}
+
+table.tabla-puntos thead th {
+    font-size: 1em;
+    
+    border-bottom: none;
+    color: #FFFFFF;
+}
+.img-tabla {
+    width: 2em;
+    height: 2em;
+    margin-top: -3px !important;
+}
+
+
+
+/*///////////////////////////*/
+/* FIXTURE */
+/*///////////////////////////*/
+
+.img-club {
+    width: 7vh;
+    height: 7vh;
+}
+
+.versus {
+    font-size: 1.2em;
+    line-height: 7vh;
+    text-shadow: 1px 1px 1px #0F2820;
+    margin-bottom:0;
+}
+
+.fixture-partido {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+    padding: 0.5em 0;
+}
+
+.titulo-principal {
+    color: var(--main-shadow);
+    font-size: 2em;
+    text-align: center;
+
+}
+.subtitulo-fecha {
+    display: block;
+    color: var(--main-bg-color);
+    font-size: 1.5em;
+}
+.detalle-partido-container {
+    margin: 2vh 0;
+    border:1px solid #358A70;
+    border-radius: 0.5em;
+}
+
+.detalle-partido {
+    text-decoration: none;
+    color: var(--text-color);
+}
+/*//////////////////////////*/
+/* FIXTURE DETALLE */
+/*//////////////////////////*/
+
+.img-club-detalle {
+    width: 15vh;
+    height: 15vh;
+}
+
+.equipo-detalle {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.equipo-info {
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    color: var(--main-shadow);
+}
+
+.partido-subtitulo {
+    color: var(--text-color);
+    text-shadow: 1px 1px 1px #0F2820;
+}
+.versus-modal {
+    font-size: 1.2em;
+    line-height: 7vh;
+    margin-bottom:0;
+}
+.modal-date {
+    color: var(--main-bg-color);
+}
+
+/*//////////////////////////*/
+/* SEDES */
+/*///////////////////////////*/
+#sedes {
+    width: 100%;
+    height: 80vh !important;
+}
+.modal-content {
+    background-color: var(--text-color);
+    color: #0F2820;
+}
+
+.sedes-item {
+    background-color: var(--main-bg-color);
+    width: 80% !important;
+    height: 10vh;
+    z-index: 0;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 0.5em;
+    box-shadow: 0px 6px 10px -3px rgba(0, 0, 0, 0.75);
+    color: var(--text-color);
+    text-shadow: 1px 1px 1px #0F2820;
+    cursor: pointer;
+}
+
+.sedes-titulo {
+    line-height: 10vh;
+    font-size: 1.5em;
+}
+
+/*//////////////////////////*/
+/* PAGINA EQUIPOS */
+/*//////////////////////////*/
+
+.equipos-item {
+    background-color: var(--main-bg-color);
+    width: 80%;
+    height: 10vh;
+    text-decoration: none;
+    text-align: left;
+    text-indent: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0px 6px 10px -3px rgba(0, 0, 0, 0.75);
+    color: var(--text-color);
+    text-shadow: 1px 1px 1px #0F2820;
+}
+
+.equipos-titulo {
+    line-height: 10vh;
+    font-size: 1.5em;
+    float: left;
+}
+
+.equipos-img {
+    float: right;
+    width: 9vh;
+    height: 9vh;
+    margin: 0.5vh;
+}
+.modal-img {
+    height: 20vh;
+    width: 20vh;
+}
+
+/*//////////////////////////*/
+/* FOROS */
+/*//////////////////////////*/
+.caja-post {
+    background-color: #358A70;
+    color: #EBF0D9;
+    width: 90%;
+    margin: auto;
+    border-radius: 0.5em;
+}
+
+#login {
+    width: 80%;
+    height: 80vh;
+}
+#sign-in-button {
+    background-color:#358A70;
+    color: #EBF0D9;
+}
+.comment-btn {
+    background-color:#358A70;
+    color: #EBF0D9;
+    border: 1px solid #EBF0D9
+}
+.create-post {
+    background-color:#358A70;
+    color: #EBF0D9;
+    width: 90%;
+    border-radius: 0.4em;
+    line-height: 1.3em;
+}
+#add-post-btn {
+    background-color:#358A70;
+    color: #EBF0D9;
+
+
+}
+/* LANDSCAPE */
+
+@media (orientation: landscape) {
+    .container {
+        width: 100% !important;
+        height: 100%;
+    }
+
+    .navbar {
+        height: 15vh;
+    }
+
+    .nav-logo {
+        height: 10vh;
+    }
+    .navbar-toggler{
+        font-size: 1rem;
+    }
+    .index-item {
+        width: 38%;
+        height: 25vh;
+    }
+    #fixture-land {
+        width: 49%;
+    }
+    #fixture-port {
+        width: 49%;
+    }
+
+    .modal-date {
+        color: var(--text-color);
+        text-shadow: 1px 1px 1px #0F2820;
+    }
+    .fix-container {
+        width: 100% !important;
+        display: flex;
+    
+    }
+    #img-ranking {
+        height: 25vh;
+    }
+    .main-item {
+        width: 50% !important;
+    }
+    .sedes-item {
+        width: 60% !important;
+    }
+    
+    .footer-nav-item {
+        height: 13vh;
+    }
+    .equipos-item {
+        width: 60%;
+    }
+    .item {
+        height: 7vh;
+    }
+}
