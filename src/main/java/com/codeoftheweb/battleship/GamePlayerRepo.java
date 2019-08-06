@@ -7,5 +7,5 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface GamePlayerRepo extends JpaRepository <GamePlayer, Long> {
-    List<Game> findByCreatedDate (String createdDate);
+    List<Game> findByJoinDate (String joinDate);
 }

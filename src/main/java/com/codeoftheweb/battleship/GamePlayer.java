@@ -12,24 +12,24 @@ public class GamePlayer {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "game_id")
     private Game game;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "player_id")
     private Player player;
 
-    private Date createdDate;
+    private Date joinDate;
 
     //Constructors
     public GamePlayer() {
     }
 
-    public GamePlayer(Game game, Player player, Date createdDate) {
+    public GamePlayer(Game game, Player player) {
         this.game = game;
         this.player = player;
-        this.createdDate = createdDate;
+        this.joinDate = new Date();
     }
     //G&S.
 
@@ -58,12 +58,12 @@ public class GamePlayer {
         this.player = player;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public Date getJoinDate() {
+        return joinDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setJoinDate(Date joinDate) {
+        this.joinDate = joinDate;
     }
 
     @Override
@@ -72,7 +72,7 @@ public class GamePlayer {
                 "id=" + id +
                 ", game=" + game +
                 ", player=" + player +
-                ", createdDate='" + createdDate + '\'' +
+                ", createdDate='" + joinDate + '\'' +
                 '}';
     }
 }

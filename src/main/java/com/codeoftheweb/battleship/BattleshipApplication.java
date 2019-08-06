@@ -16,24 +16,42 @@ public class BattleshipApplication {
 	@Bean
 	public CommandLineRunner initData (PlayerRepo plRepos, GameRepo gameRepos, GamePlayerRepo gameplayerRepo) {
 		return(args) -> {
+			Player playerOne = new Player("j.bauer@ctu.gov");
+			Player playerTwo = new Player("c.obrian@ctu.gov");
+			Player playerThree = new Player("kim_bauer@gmail.com");
+			Player playerFour = new Player("t.almeida@ctu.gov");
 
-			plRepos.save(new Player("jackbauer@gmail.com"));
-			plRepos.save(new Player("chloebrian@gmail.com"));
-			plRepos.save(new Player("qwerty@gmail.com"));
+			Date dateOne = new Date();
+			Date dateTwo = Date.from(dateOne.toInstant().plusSeconds(3600));
+			Date dateThree = Date.from(dateOne.toInstant().plusSeconds(7200));
 
-			Date date = new Date();
-			Date dateOne = Date.from(date.toInstant().plusSeconds(3600));
-			Date dateTwo = Date.from(date.toInstant().plusSeconds(7200));
-			Date dateTree = Date.from(date.toInstant().plusSeconds(10800));
+			plRepos.save(playerOne);
+			plRepos.save(playerTwo);
+			plRepos.save(playerThree);
+			plRepos.save(playerFour);
 
-//			gameRepos.save(new Game(date));
-//			gameRepos.save(new Game(dateOne));
-//			gameRepos.save(new Game(dateTwo));
+			Game gameOne = new Game (dateOne);
+			Game gameTwo = new Game (dateTwo);
+			Game gameThree = new Game (dateThree);
 
-			gameplayerRepo.save(new GamePlayer(new Game(date), new Player("qwerty@gmail.com"),date));
-			gameplayerRepo.save(new GamePlayer(new Game(dateOne), new Player("asd@gmail.com"),dateOne));
-			gameplayerRepo.save(new GamePlayer(new Game(dateTwo), new Player("qwey@gmail.com"),dateTwo));
-			gameplayerRepo.save(new GamePlayer(new Game(dateTree), new Player("asdf@gmail.com"),dateTree));
+			gameRepos.save(gameOne);
+			gameRepos.save(gameTwo);
+			gameRepos.save(gameThree);
+
+			GamePlayer gamePlayerOne = new GamePlayer(gameOne,playerOne);
+			GamePlayer gamePlayerTwo = new GamePlayer(gameOne,playerTwo);
+			GamePlayer gamePlayerThree = new GamePlayer(gameTwo,playerThree);
+			GamePlayer gamePlayerFour = new GamePlayer(gameTwo,playerFour);
+			GamePlayer gamePlayerFive = new GamePlayer(gameThree,playerTwo);
+			GamePlayer gamePlayerSix = new GamePlayer(gameThree,playerThree);
+
+
+			gameplayerRepo.save(gamePlayerOne);
+			gameplayerRepo.save(gamePlayerTwo);
+			gameplayerRepo.save(gamePlayerThree);
+			gameplayerRepo.save(gamePlayerFour);
+			gameplayerRepo.save(gamePlayerFive);
+			gameplayerRepo.save(gamePlayerSix);
 
 
 		};

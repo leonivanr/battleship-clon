@@ -12,11 +12,12 @@ import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 
 @RestController
+@RequestMapping("/api")
 public class BattleshipController {
     @Autowired
     private GameRepo gameRepo;
 
-    @RequestMapping("/api/games")
+    @RequestMapping("/games")
     public List<Object> getAll() {
         return gameRepo.findAll().stream().map(this::gameToDto).collect(toList());
     }
