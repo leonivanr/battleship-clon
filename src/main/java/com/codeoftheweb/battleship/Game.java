@@ -33,10 +33,6 @@ public class Game {
         return gameplayers;
     }
 
-    public void setGameplayers(List<GamePlayer> gameplayers) {
-        this.gameplayers = gameplayers;
-    }
-
     public Long getId() {
         return id;
     }
@@ -54,8 +50,4 @@ public class Game {
         gameplayers.add(gameplayer);
     }
 
-    @Override
-    public String toString() {
-        return "Game date=" + createdDate;
-    }
 }

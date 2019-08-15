@@ -1,9 +1,13 @@
 package com.codeoftheweb.battleship;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class GamePlayer {
@@ -11,6 +15,7 @@ public class GamePlayer {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
+    private Date joinDate;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "game_id")
@@ -20,7 +25,10 @@ public class GamePlayer {
     @JoinColumn(name = "player_id")
     private Player player;
 
-    private Date joinDate;
+    @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Ship> ships = new ArrayList<>();
+
 
     //Constructors
     public GamePlayer() {
@@ -33,13 +41,8 @@ public class GamePlayer {
     }
     //G&S.
 
-
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public Game getGame() {
@@ -62,17 +65,13 @@ public class GamePlayer {
         return joinDate;
     }
 
-    public void setJoinDate(Date joinDate) {
-        this.joinDate = joinDate;
+    public List<Ship> getShips() {
+        return ships;
     }
 
-    @Override
-    public String toString() {
-        return "GamePlayer{" +
-                "id=" + id +
-                ", game=" + game +
-                ", player=" + player +
-                ", createdDate='" + joinDate + '\'' +
-                '}';
+    public void addShip(Ship ship) {
+        ship.setGamePlayer(this);
+        ships.add(ship);
     }
+
 }

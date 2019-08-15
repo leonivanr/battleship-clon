@@ -5,6 +5,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 
 @RepositoryRestResource
-public interface GamePlayerRepo extends JpaRepository <GamePlayer, Long> {
-
+public interface ShipRepo extends JpaRepository <Ship, Long> {
 }
