@@ -1,5 +1,5 @@
 $(function () {
-  
+  console.log('hi')
   // display text in the output area
   function showOutput(text) {
     $("#output").text(text);

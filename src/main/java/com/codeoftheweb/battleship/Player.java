@@ -5,9 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
-import static java.util.stream.Collectors.toList;
 
 @Entity
 public class Player {
@@ -19,14 +17,13 @@ public class Player {
 
     @JsonIgnore
     @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
-    Set<GamePlayer> gameplayers;
+    List<GamePlayer> gameplayers;
 
     public Player() {
     }
 
     public Player(String username) {
         this.email = username;
-
     }
 
     public long getId() {
@@ -47,12 +44,7 @@ public class Player {
 
     public void addGamePlayer(GamePlayer gameplayer) {
         gameplayer.setPlayer(this);
-        gameplayers.add(gameplayer);
+        this.gameplayers.add(gameplayer);
     }
 
-
-    @Override
-    public String toString() {
-        return "Player: " + email;
-    }
 }

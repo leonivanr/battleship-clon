@@ -6,7 +6,7 @@ $(function () {
       $.get("/api/games")
         .done(function (data) {
           updateView(data)
-          console.log(data)
+          console.log(data);
         })
         .fail(function (jqXHR, textStatus) {
           showOutput("Failed: " + textStatus);

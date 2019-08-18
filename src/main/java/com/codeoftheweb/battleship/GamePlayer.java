@@ -1,7 +1,5 @@
 package com.codeoftheweb.battleship;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -17,16 +15,15 @@ public class GamePlayer {
     private long id;
     private Date joinDate;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "game_id")
     private Game game;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "player_id")
     private Player player;
 
-    @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER)
-    @Fetch(value = FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Ship> ships = new ArrayList<>();
 
 
@@ -71,7 +68,7 @@ public class GamePlayer {
 
     public void addShip(Ship ship) {
         ship.setGamePlayer(this);
-        ships.add(ship);
+        this.ships.add(ship);
     }
 
 }

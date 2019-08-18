@@ -7,6 +7,4 @@ import java.util.List;
 @RepositoryRestResource
 public interface GameRepo extends JpaRepository <Game, Long>{
 
-    List<Game> findByCreatedDate (String createdDate);
-
 }
