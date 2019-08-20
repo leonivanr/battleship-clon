@@ -17,7 +17,7 @@ public class BattleshipApplication {
 		SpringApplication.run(BattleshipApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner initData (PlayerRepo plyRepo, GameRepo gameRepos, GamePlayerRepo gameplayerRepo, ShipRepo shipRepo) {
+	public CommandLineRunner initData (PlayerRepo plyRepo,GameRepo gameRepos,GamePlayerRepo gameplayerRepo,ShipRepo shipRepo,SalvoRepo salvoRepo) {
 		return(args) -> {
 			Player player1 = new Player("j.bauer@ctu.gov");
 			Player player2 = new Player("c.obrian@ctu.gov");
@@ -86,7 +86,7 @@ public class BattleshipApplication {
 			Ship ship7 = new Ship(location7, shipTypeDestroyer);
 			Ship ship8 = new Ship(location8, shipTypePatrolBoat);
 			Ship ship9 = new Ship(location9, shipTypeBattleship);
-			Ship ship10 = new Ship(location3, shipTypePatrolBoat);
+			Ship ship10 = new Ship(location10, shipTypePatrolBoat);
 			Ship ship11 = new Ship(location8, shipTypeDestroyer);
 			Ship ship12 = new Ship(location5, shipTypeCarrier);
 
@@ -103,15 +103,42 @@ public class BattleshipApplication {
 			shipRepo.save(ship11);
 			shipRepo.save(ship12);
 
+			List<String> salvoLocation1 = new ArrayList<>(Arrays.asList("A6","B9"));
+			List<String> salvoLocation2 = new ArrayList<>(Arrays.asList("G1","H4"));
+			List<String> salvoLocation3 = new ArrayList<>(Arrays.asList("J5","F3"));
+			List<String> salvoLocation4= new ArrayList<>(Arrays.asList("B3","B7"));
+			List<String> salvoLocation5 = new ArrayList<>(Arrays.asList("D1","E3"));
+			List<String> salvoLocation6 = new ArrayList<>(Arrays.asList("C3","F6"));
+
+			Salvo salvo1 = new Salvo(salvoLocation1,1);
+			Salvo salvo2 = new Salvo(salvoLocation2,1);
+			Salvo salvo3 = new Salvo(salvoLocation3,2);
+			Salvo salvo4 = new Salvo(salvoLocation4,2);
+			Salvo salvo5 = new Salvo(salvoLocation5,3);
+			Salvo salvo6 = new Salvo(salvoLocation6,3);
+
+			salvoRepo.save(salvo1);
+			salvoRepo.save(salvo2);
+			salvoRepo.save(salvo3);
+			salvoRepo.save(salvo4);
+			salvoRepo.save(salvo5);
+			salvoRepo.save(salvo6);
+
 			// Add ships to gameplayer.
 			gamePlayer1.addShip(ship1);
 			gamePlayer1.addShip(ship2);
 			gamePlayer1.addShip(ship3);
+			gamePlayer1.addSalvo(salvo1);
+			gamePlayer1.addSalvo(salvo3);
+			gamePlayer1.addSalvo(salvo5);
 			gameplayerRepo.save(gamePlayer1);
 
 			gamePlayer2.addShip(ship4);
 			gamePlayer2.addShip(ship5);
 			gamePlayer2.addShip(ship6);
+			gamePlayer2.addSalvo(salvo2);
+			gamePlayer2.addSalvo(salvo4);
+			gamePlayer2.addSalvo(salvo6);
 			gameplayerRepo.save(gamePlayer2);
 
 			gamePlayer3.addShip(ship7);
@@ -123,8 +150,6 @@ public class BattleshipApplication {
 			gamePlayer4.addShip(ship11);
 			gamePlayer4.addShip(ship12);
 			gameplayerRepo.save(gamePlayer4);
-
-
 
 		};
 	}

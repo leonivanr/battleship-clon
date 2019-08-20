@@ -1,5 +1,7 @@
 package com.codeoftheweb.battleship;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -24,8 +26,12 @@ public class GamePlayer {
     private Player player;
 
     @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Ship> ships = new ArrayList<>();
 
+    @OneToMany(mappedBy = "gamePlayer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Salvo> salvoes = new ArrayList<>();
 
     //Constructors
     public GamePlayer() {
@@ -71,4 +77,12 @@ public class GamePlayer {
         this.ships.add(ship);
     }
 
+    public void addSalvo(Salvo salvo) {
+        salvo.setGamePlayer(this);
+        this.salvoes.add(salvo);
+    }
+
+    public List<Salvo> getSalvoes() {
+        return salvoes;
+    }
 }
