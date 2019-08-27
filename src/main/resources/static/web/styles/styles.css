@@ -1,23 +1,74 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Varela Round', sans-serif;
+  --blue-color: #4062bb;
+  --green-color: #2e5266;
+  --light-green-color: #c8c8c8;
+  --pink-color: #f46036;
+}
+
+html,
+body {
+  background-color: var(--light-green-color);
+  color: #2e5266;
+  height: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
 }
 
 .grid-cell {
-  border: 1px solid lightgrey;
-  width: 30px;
-  height: 30px;
-  border-radius: 3px;
-  margin: 2px;
+  border: 1px solid var(--green-color);
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 0.15em;
+  margin: 0.15em;
 }
+
 .grid-header {
   border-color: black;
   text-align: center;
-  line-height: 30px;
+  line-height: 1.7em;
 }
-.grid-container {
+
+.grid-salvoes {
   display: flex;
+  border-radius: 0.15em;
 }
+
+.grid-ships {
+  display: flex;
+  border-radius: 0.15em;
+}
+
 .ship-placed {
-  background-color: black;
+  background-color: var(--green-color);
+}
+
+.salvo-placed {
+  box-shadow: inset 0px 0px 0px 0.1em var(--green-color);
+  background-color: var(--pink-color)
+}
+
+.title-player {
+  margin: 0.5em 0;
+}
+
+
+.title-main {
+  margin: 1em 0;
 }

@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 public class Player {
+    //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -19,12 +20,15 @@ public class Player {
     @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
     List<GamePlayer> gameplayers;
 
+    //Constructors
     public Player() {
     }
 
     public Player(String username) {
         this.email = username;
     }
+
+    //G&S
 
     public long getId() {
         return id;

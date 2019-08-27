@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 public class Ship {
+    //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator ="native" )
     @GenericGenerator(name = "native", strategy = "native")
@@ -23,6 +24,7 @@ public class Ship {
     @ElementCollection
     private List<String> shipLocations;
 
+    //Constructors
     public Ship() {
     }
 
@@ -30,7 +32,7 @@ public class Ship {
         this.shipType = shipType;
         this.shipLocations = shipLocations;
     }
-
+    //G&S
     public long getId() {
         return id;
     }

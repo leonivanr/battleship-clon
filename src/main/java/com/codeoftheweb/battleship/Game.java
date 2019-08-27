@@ -9,7 +9,7 @@ import java.util.*;
 
 @Entity
 public class Game {
-
+    // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -19,7 +19,8 @@ public class Game {
     @JsonIgnore
     @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
     List<GamePlayer> gameplayers;
-
+    
+    // Constructors.
     public Game() {
     }
 
@@ -27,6 +28,7 @@ public class Game {
         this.createdDate = createdDate;
     }
 
+    // G&S.
     @JsonIgnore
     public List<GamePlayer> getGameplayers() {
         return gameplayers;
@@ -46,7 +48,7 @@ public class Game {
 
     public void addGamePlayer(GamePlayer gameplayer) {
         gameplayer.setGame(this);
-        gameplayers.add(gameplayer);
+        this.gameplayers.add(gameplayer);
     }
 
 }

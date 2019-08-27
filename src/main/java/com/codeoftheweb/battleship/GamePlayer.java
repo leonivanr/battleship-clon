@@ -11,6 +11,7 @@ import java.util.List;
 
 @Entity
 public class GamePlayer {
+    //Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -42,6 +43,7 @@ public class GamePlayer {
         this.player = player;
         this.joinDate = new Date();
     }
+
     //G&S.
 
     public long getId() {
@@ -68,13 +70,13 @@ public class GamePlayer {
         return joinDate;
     }
 
-    public List<Ship> getShips() {
-        return ships;
-    }
-
     public void addShip(Ship ship) {
         ship.setGamePlayer(this);
         this.ships.add(ship);
+    }
+
+    public List<Ship> getShips() {
+        return ships;
     }
 
     public void addSalvo(Salvo salvo) {

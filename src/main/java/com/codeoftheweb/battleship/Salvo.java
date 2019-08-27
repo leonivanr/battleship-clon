@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 public class Salvo {
+    //Atributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -31,7 +32,7 @@ public class Salvo {
         this.turn = turn;
     }
 
-    // Getters & Setters.
+    // G&S.
     public long getId() {
         return id;
     }
