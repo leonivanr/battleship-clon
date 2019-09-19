@@ -17,7 +17,7 @@ public class BattleshipApplication {
 		SpringApplication.run(BattleshipApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner initData (PlayerRepo plyRepo,GameRepo gameRepos,GamePlayerRepo gameplayerRepo,ShipRepo shipRepo,SalvoRepo salvoRepo) {
+	public CommandLineRunner initData (PlayerRepo plyRepo,GameRepo gameRepos,GamePlayerRepo gameplayerRepo,ShipRepo shipRepo,SalvoRepo salvoRepo,ScoreRepo scoreRepo) {
 		return(args) -> {
 			Player player1 = new Player("j.bauer@ctu.gov");
 			Player player2 = new Player("c.obrian@ctu.gov");
@@ -150,6 +150,27 @@ public class BattleshipApplication {
 			gamePlayer4.addShip(ship11);
 			gamePlayer4.addShip(ship12);
 			gameplayerRepo.save(gamePlayer4);
+
+			// Instancias de Score
+			Score score1 = new Score(player1,game1,1,new Date());
+			Score score2 = new Score(player1,game1,0.5,new Date());
+			Score score3 = new Score(player1,game2,0,new Date());
+			Score score4 = new Score(player2,game1,1,new Date());
+			Score score5 = new Score(player2,game3,0.5,new Date());
+			Score score6 = new Score(player3,game4,0,new Date());
+			Score score7 = new Score(player3,game2,1,new Date());
+			Score score8 = new Score(player4,game3,0.5,new Date());
+			Score score9 = new Score(player4,game4,0,new Date());
+
+			scoreRepo.save(score1);
+			scoreRepo.save(score2);
+			scoreRepo.save(score3);
+			scoreRepo.save(score4);
+			scoreRepo.save(score5);
+			scoreRepo.save(score6);
+			scoreRepo.save(score7);
+			scoreRepo.save(score8);
+			scoreRepo.save(score9);
 
 		};
 	}

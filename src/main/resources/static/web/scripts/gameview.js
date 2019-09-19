@@ -3,8 +3,6 @@ $(function () {
   var urlParams = new URLSearchParams(window.location.search);
   var gamePlayerId = urlParams.get('gp');
 
-  //#region sample data  
-  var turn = 1;
   const sample = {
     "idGame": 1,
     "creationDate": "2019-08-18T04:01:39.803+0000",
@@ -140,27 +138,28 @@ $(function () {
 
     shipPart.classList.add('ship-placed');
   }
-  // Display salvoes for the player and opponent.
   const renderSalvoes = data => {
-    //REVIEW:
-    var salvos = data.salvoes.filter(salvo =>
-      salvo.turn === turn
-    )
+    let playerOne = data.salvoes.filter(x => (x.player === Number(gamePlayerId)));
+    console.log(playerOne);
+    let playerTwo = data.salvoes.filter(x => (x.player !== Number(gamePlayerId)));
+    console.log(playerTwo);
+    
+    playerOne.forEach(turno => {
+      turno.locations.forEach(hit => {
+        addSalvoClass(hit, "salvo")
+      })
+    })
 
-    if (gamePlayerId === salvos[0].player) {
-      addSalvoClass(salvos[0].locations, "salvo");
-      addSalvoClass(salvos[1].locations, "ship");
-    } else {
-      addSalvoClass(salvos[1].locations, "salvo");
-      addSalvoClass(salvos[0].locations, "ship");
-    }
+    playerTwo.forEach(turno => {
+      turno.locations.forEach(hit => {
+        addSalvoClass(hit, "ship")
+      })
+    })
 
   }
-  const addSalvoClass = (locations, type) => {
-    locations.forEach(location => {
-      let locationElem = document.getElementById(type + location.toLowerCase());
-      locationElem.classList.add('salvo-placed');
-    })
+  const addSalvoClass = (hit, type) => {
+    let hitLocation = document.getElementById(type + hit.toLowerCase());
+    hitLocation.classList.add('salvo-placed');
   }
 
   createGrid(11, "grid-ships", "ship");

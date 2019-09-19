@@ -68,7 +68,20 @@ body {
   margin: 0.5em 0;
 }
 
-
 .title-main {
   margin: 1em 0;
+}
+/*LeaderBoard*/
+.wrapper-leader{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items:center;
+  justify-content: flex-start;
+}
+.table-leader th,td{
+      border: 1px solid var(--green-color);
+      padding: 1em;
 }

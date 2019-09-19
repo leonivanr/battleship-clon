@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,6 +20,10 @@ public class Player {
     @JsonIgnore
     @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
     List<GamePlayer> gameplayers;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
+    List<Score> scores = new ArrayList<>();
 
     //Constructors
     public Player() {
@@ -45,6 +50,9 @@ public class Player {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @JsonIgnore
+    public List<Score> getScores() { return scores; }
 
     public void addGamePlayer(GamePlayer gameplayer) {
         gameplayer.setPlayer(this);

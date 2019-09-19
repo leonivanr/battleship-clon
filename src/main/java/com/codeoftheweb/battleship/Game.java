@@ -19,9 +19,14 @@ public class Game {
     @JsonIgnore
     @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
     List<GamePlayer> gameplayers;
-    
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
+    List<Score> scores = new ArrayList<>();
+
     // Constructors.
     public Game() {
+        this.createdDate = new Date();
     }
 
     public Game(Date createdDate) {
@@ -33,6 +38,9 @@ public class Game {
     public List<GamePlayer> getGameplayers() {
         return gameplayers;
     }
+
+    @JsonIgnore
+    public List<Score> getScores() { return scores; }
 
     public Long getId() {
         return id;
