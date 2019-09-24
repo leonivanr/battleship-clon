@@ -25,12 +25,15 @@ public class Player {
     @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
     List<Score> scores = new ArrayList<>();
 
+    private String password;
+
     //Constructors
     public Player() {
     }
 
-    public Player(String username) {
+    public Player(String username, String password) {
         this.email = username;
+        this.password = password;
     }
 
     //G&S
@@ -51,7 +54,6 @@ public class Player {
         this.email = email;
     }
 
-    @JsonIgnore
     public List<Score> getScores() { return scores; }
 
     public void addGamePlayer(GamePlayer gameplayer) {
@@ -59,4 +61,11 @@ public class Player {
         this.gameplayers.add(gameplayer);
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+}
 }
