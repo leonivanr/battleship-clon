@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+  <title>Leaderboard</title>
+</head>
+
+<body>
+  <div class="wrapper-leader">
+    <form id="login-form" onsubmit="return false">
+      <label><input type="text" name="email" placeholder="Name" id="username"></label>
+      <label><input type="text" name="password" placeholder="Password" id="password"></label>
+      <button class="btn btn-primary" onclick="login()">Login</button>
+      <!-- <button type="submit" class="btn btn-primary" onclick="signup()">Sign Up</button> -->
+    </form>
+
+  </div>
+
+  <script src="scripts/jquery-3.4.1.min.js"></script>
+  <script>
+    function login() {
+      console.log("entro")
+      $.post("/api/login", {
+          email: "c.obrian@ctu.gov",
+          password: "dos2"
+        }).done(function () {
+          console.log("logged in!");
+        })
+        .fail(error => {
+          return console.log("Status: " + error.responseJSON.status + " Error: " + error.responseJSON.error)
+        });
+    }
+  </script>
+
+</body>
+
+</html>

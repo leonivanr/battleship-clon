@@ -1,6 +1,8 @@
 package com.codeoftheweb.battleship;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -23,7 +25,7 @@ public class Player {
 
     @JsonIgnore
     @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
-    List<Score> scores = new ArrayList<>();
+    List<Score> scores;
 
     private String password;
 

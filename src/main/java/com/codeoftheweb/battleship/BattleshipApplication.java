@@ -230,15 +230,16 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/web/**").permitAll()
                 .antMatchers("/api/games").permitAll()
                 .antMatchers("/api/players").permitAll()
+				.antMatchers("/api/login").permitAll()
                 .antMatchers("/api/game_view/*").hasAuthority("USER")
                 .antMatchers("/rest").denyAll()
                 .anyRequest().permitAll();
         http.formLogin()
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .loginPage("/app/login");
+                .loginPage("/api/login");
 
-        http.logout().logoutUrl("/app/logout");
+        http.logout().logoutUrl("/api/logout");
 
         // turn off checking for CSRF tokens
         http.csrf().disable();

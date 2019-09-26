@@ -1,9 +1,10 @@
 package com.codeoftheweb.battleship;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -21,6 +22,10 @@ public class BattleshipController {
 
     @Autowired
     private PlayerRepo playerRepo;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     @RequestMapping("/games")
     public Map<String, Object> getGames() {
@@ -48,6 +53,20 @@ public class BattleshipController {
         //Retrive data for the given player. /game.html?gp=1
         GamePlayer gamePlayer = gamePlayerRepo.findById(gamePlayerId).orElse(null);
         return getGameViewDTO(gamePlayer.getGame(), gamePlayer);
+    }
+
+    @RequestMapping(path = "/players", method = RequestMethod.POST)
+    public ResponseEntity<Object> register(@RequestParam String email, @RequestParam String password) {
+        if (email.isEmpty() || password.isEmpty()) {
+            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+        }
+
+        if (playerRepo.findByEmail(email) != null) {
+            return new ResponseEntity<>("Name already in use", HttpStatus.FORBIDDEN);
+        }
+
+        playerRepo.save(new Player(email, passwordEncoder.encode(password)));
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     private Map<String, Object> getGameViewDTO(Game game, GamePlayer gamePlayer) {
