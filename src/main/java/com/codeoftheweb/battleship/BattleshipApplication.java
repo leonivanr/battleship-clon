@@ -42,10 +42,10 @@ public class BattleshipApplication {
 	@Bean
 	public CommandLineRunner initData (PlayerRepo plyRepo,GameRepo gameRepos,GamePlayerRepo gameplayerRepo,ShipRepo shipRepo,SalvoRepo salvoRepo,ScoreRepo scoreRepo) {
 		return(args) -> {
-			Player player1 = new Player("j.bauer@ctu.gov", "uno1");
-			Player player2 = new Player("c.obrian@ctu.gov","dos2");
-			Player player3 = new Player("kim_bauer@gmail.com","tres3");
-			Player player4 = new Player("t.almeida@ctu.gov","cuatro4");
+			Player player1 = new Player("j.bauer@ctu.gov", passwordEncoder().encode("uno1"));
+			Player player2 = new Player("c.obrian@ctu.gov",passwordEncoder().encode("dos2"));
+			Player player3 = new Player("kim_bauer@gmail.com",passwordEncoder().encode("tres3"));
+			Player player4 = new Player("t.almeida@ctu.gov",passwordEncoder().encode("cuatro4"));
 
 			Date date1 = new Date();
 			Date date2 = Date.from(date1.toInstant().plusSeconds(3600));
@@ -208,7 +208,7 @@ class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter {
     @Override
     public void init(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(inputName-> {
-            Player player = (Player) playerRepo.findByEmail(inputName);
+            Player player = playerRepo.findByEmail(inputName);
             if (player != null) {
                 return new User(player.getEmail(), player.getPassword(),
                         AuthorityUtils.createAuthorityList("USER"));
@@ -225,15 +225,13 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                //.antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/web/games.html").permitAll()
+				.antMatchers("/web/games.html").permitAll()
                 .antMatchers("/web/**").permitAll()
-                .antMatchers("/api/games").permitAll()
-                .antMatchers("/api/players").permitAll()
-				.antMatchers("/api/login").permitAll()
-                .antMatchers("/api/game_view/*").hasAuthority("USER")
-                .antMatchers("/rest").denyAll()
-                .anyRequest().permitAll();
+				.antMatchers("/api/games").permitAll()
+				.antMatchers("/api/players").permitAll()
+				.antMatchers("/api/game_view/*").hasAuthority("USER")
+				.antMatchers("/rest").denyAll()
+				.anyRequest().permitAll();
         http.formLogin()
                 .usernameParameter("email")
                 .passwordParameter("password")
