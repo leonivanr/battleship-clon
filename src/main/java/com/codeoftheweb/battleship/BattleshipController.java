@@ -3,6 +3,7 @@ package com.codeoftheweb.battleship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -29,13 +30,22 @@ public class BattleshipController {
 
 
     @RequestMapping("/games")
-    public Map<String, Object> getGames() {
+    public Map<String, Object> getGames(Authentication authentication) {
         Map<String, Object> dto = new HashMap();
+        if(isGuest(authentication)){
+            dto.put("player", null);
+        }else{
+            dto.put("player", playerDTO(playerRepo.findByEmail(authentication.getName())));
+        }
         dto.put("games", gameRepo.findAll()
                 .stream()
                 .map(game -> gameToDto(game))
                 .collect(toList()));
         return dto;
+    }
+
+    private boolean isGuest(Authentication authentication) {
+        return authentication == null || authentication instanceof AnonymousAuthenticationToken;
     }
 
     @RequestMapping("/leaderboard")
@@ -67,8 +77,9 @@ public class BattleshipController {
         }
 
         playerRepo.save(new Player(email, passwordEncoder.encode(password)));
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>("User created successfully.",HttpStatus.CREATED);
     }
+
 
     private Map<String, Object> getGameViewDTO(Game game, GamePlayer gamePlayer) {
         //DTO = combine multiple requests in one request. (JSON).
@@ -168,4 +179,13 @@ public class BattleshipController {
         dto.put("tied", tied);
         return dto;
     }
+
+    public Map<String, Object> playerDTO(Player player){
+
+        Map<String, Object> dto = new LinkedHashMap<>();
+        dto.put("id", player.getId());
+        dto.put("email", player.getEmail());
+        return dto;
+    }
+
 }

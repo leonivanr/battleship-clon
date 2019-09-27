@@ -1,12 +1,21 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Pixel Mono', sans-serif;
   --blue-color: #4062bb;
   --green-color: #2e5266;
   --light-green-color: #c8c8c8;
   --pink-color: #f46036;
 }
+
+@font-face {
+  font-family: 'Pixel Mono';
+  src: url('fonts/vcr_osd_mono_1.001-webfont.woff2') format('woff2'),
+       url('fonts/vcr_osd_mono_1.001-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 
 html,
 body {
