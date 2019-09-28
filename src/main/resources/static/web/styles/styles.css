@@ -1,17 +1,19 @@
 * {
-  margin: 0;
-  padding: 0;
-  font-family: 'Pixel Mono', sans-serif;
-  --blue-color: #4062bb;
+  font-family: 'Press Start 2P', cursive;
+  /* --blue-color: #4062bb;
   --green-color: #2e5266;
   --light-green-color: #c8c8c8;
+  --pink-color: #f46036; */
+  --blue-color: #b7ad99; 
+  --green-color: #635d5c;
+  --light-green-color: #141414;
   --pink-color: #f46036;
 }
 
 @font-face {
   font-family: 'Pixel Mono';
   src: url('fonts/vcr_osd_mono_1.001-webfont.woff2') format('woff2'),
-       url('fonts/vcr_osd_mono_1.001-webfont.woff') format('woff');
+    url('fonts/vcr_osd_mono_1.001-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -20,7 +22,7 @@
 html,
 body {
   background-color: var(--light-green-color);
-  color: #2e5266;
+  color: var(--blue-color);
   height: 100%;
 }
 
@@ -80,17 +82,73 @@ body {
 .title-main {
   margin: 1em 0;
 }
+
 /*LeaderBoard*/
-.wrapper-leader{
+.wrapper-leader {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
-  align-items:center;
+  align-items: center;
   justify-content: flex-start;
 }
-.table-leader th,td{
-      border: 1px solid var(--green-color);
-      padding: 1em;
+
+.table-leader th,
+td {
+  padding: 0.5em 1em;
+}
+
+.table-leader tbody {
+  margin: 1em;
+}
+#leader-list{
+  text-align: center;
+}
+.table-leader th {
+  /* box-shadow: 0px 5px #888888, 0px -5px #888888, 1px 0px #888888 */
+}
+
+.holder {
+  width: 500px;
+  height: 300px;
+  background-color: aquamarine;
+}
+.main-menu{
+  list-style: none;
+}
+.main-menu a {
+  text-decoration: none;
+  color: var(--blue-color) !important;
+}
+.main-menu a:hover {
+  text-decoration: none;
+  color: var(--green-color) !important;
+}
+.main-menu a {
+  text-decoration: none;
+  color: var(--blue-color) !important;
+}
+.main-menu li {
+  margin-bottom: 0.5rem;
+}
+#username,
+#password {
+  width: 150px;
+  padding: 0.3em 0.3em 0.3em 0.4em;
+}
+.pixel-sdw{
+  box-shadow: 0px 5px #888888, 0px -5px #888888, 1px 0px #888888,1px 0px #888888
+}
+
+.modal-content{
+  color: var(--blue-color) !important;
+  background-color: var(--light-green-color);
+}
+.close{
+  color: var(--blue-color) !important;
+
+}
+.modal-header{
+  border-bottom:none;
 }

@@ -33,7 +33,7 @@ public class BattleshipController {
     public Map<String, Object> getGames(Authentication authentication) {
         Map<String, Object> dto = new HashMap();
         if(isGuest(authentication)){
-            dto.put("player", null);
+            dto.put("player", "Guest");
         }else{
             dto.put("player", playerDTO(playerRepo.findByEmail(authentication.getName())));
         }
