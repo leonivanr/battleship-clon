@@ -91,18 +91,24 @@ $(function () {
         // Creates a div (cell) for each row.         
         let cell = document.createElement('div');
         cell.classList.add('grid-cell');
+        if (i === 0 && j === 0) {
+          //example: id="salvog5" / id="shipc3"
+          cell.classList.add('grid-empty');
+        }
         if (i > 0 && j > 0) {
           //example: id="salvog5" / id="shipc3"
           cell.id = gridType + rowId + j;
         }
         if (j === 0 && i > 0) {
           // Adds header's column name. 
-          cell.classList.add('grid-header');
+          cell.classList.remove('grid-cell')
+          cell.classList.add('grid-header-top');
           cell.innerText = String.fromCharCode(i + 64);
         }
         if (i === 0 && j > 0) {
           // Adds header's row name. 
-          cell.classList.add('grid-header');
+          cell.classList.remove('grid-cell')
+          cell.classList.add('grid-header-left');
           cell.innerText = j;
         }
         row.appendChild(cell)

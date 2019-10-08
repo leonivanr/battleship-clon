@@ -4,10 +4,11 @@
   --green-color: #2e5266;
   --light-green-color: #c8c8c8;
   --pink-color: #f46036; */
-  --blue-color: #b7ad99; 
+  --blue-color: #b7ad99;
   --green-color: #635d5c;
   --light-green-color: #141414;
   --pink-color: #f46036;
+  
 }
 
 @font-face {
@@ -24,6 +25,14 @@ body {
   background-color: var(--light-green-color);
   color: var(--blue-color);
   height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .wrapper {
@@ -44,16 +53,34 @@ body {
 
 .grid-cell {
   border: 1px solid var(--green-color);
-  width: 1.7em;
-  height: 1.7em;
-  border-radius: 0.15em;
-  margin: 0.15em;
+  width: 1.9em;
+  height: 1.9em;
+  background-image: url(../media/pattern.jpg)
 }
 
-.grid-header {
-  border-color: black;
+.grid-header-top {
+  /* border: none; */
   text-align: center;
-  line-height: 1.7em;
+  width: 1.9em;
+  height: 1.9em;
+  line-height: 1.9em;
+  margin-bottom: 5px;
+}
+
+.grid-header-left {
+  border: 1px solid transparent;
+  text-align: center;
+  width: 1.9em;
+  height: 1.9em;
+  line-height: 1.9em;
+  margin-right: 10px;
+}
+
+.grid-empty {
+  border: 1px solid transparent;
+  margin-bottom: 5px;
+  background-image: none;
+
 }
 
 .grid-salvoes {
@@ -102,53 +129,176 @@ td {
 .table-leader tbody {
   margin: 1em;
 }
-#leader-list{
+
+#leader-list {
   text-align: center;
 }
-.table-leader th {
-  /* box-shadow: 0px 5px #888888, 0px -5px #888888, 1px 0px #888888 */
-}
+
 
 .holder {
   width: 500px;
   height: 300px;
   background-color: aquamarine;
 }
-.main-menu{
+
+.main-menu {
   list-style: none;
+  padding:0;
 }
+
 .main-menu a {
   text-decoration: none;
   color: var(--blue-color) !important;
 }
+
 .main-menu a:hover {
   text-decoration: none;
   color: var(--green-color) !important;
 }
-.main-menu a {
-  text-decoration: none;
-  color: var(--blue-color) !important;
-}
+
 .main-menu li {
   margin-bottom: 0.5rem;
 }
+
 #username,
 #password {
   width: 150px;
-  padding: 0.3em 0.3em 0.3em 0.4em;
-}
-.pixel-sdw{
-  box-shadow: 0px 5px #888888, 0px -5px #888888, 1px 0px #888888,1px 0px #888888
+  /* padding: 0.3em 0.3em 0.3em 0.4em; */
 }
 
-.modal-content{
+.pixel-sdw {
+  background-color: var(--blue-color);
+  color: var(--green-color);
+  font-size: small;
+  border-radius: 0;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  box-shadow:
+    /* top*/
+    0px 4px var(--green-color),
+    /* bottom */
+    0px -4px var(--green-color),
+    /* left */
+    -4px 0px var(--green-color),
+    /* right */
+    4px 0px var(--green-color),
+    /* top-left-corner*/
+    2px 2px var(--green-color),
+    /* bottom-left-corner */
+    2px -2px var(--green-color),
+    /* top-left-corner */
+    -2px 2px var(--green-color),
+    /* top-right-corner */
+    -2px -2px var(--green-color)
+}
+
+.pixel-sdw:hover {
+  background-color: var(--green-color);
+  color: var(--blue-color);
+  box-shadow:
+    /* top*/
+    0px 4px var(--blue-color),
+    /* bottom */
+    0px -4px var(--blue-color),
+    /* left */
+    -4px 0px var(--blue-color),
+    /* right */
+    4px 0px var(--blue-color),
+    /* top-left-corner*/
+    2px 2px var(--blue-color),
+    /* bottom-left-corner */
+    2px -2px var(--blue-color),
+    /* top-left-corner */
+    -2px 2px var(--blue-color),
+    /* top-right-corner */
+    -2px -2px var(--blue-color)
+}
+
+.pixel-sdw-r {
+  background-color: var(--green-color);
+  color: var(--blue-color);
+  font-size: small;
+  border-radius: 0;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  box-shadow:
+    /* top*/
+    0px 4px var(--blue-color),
+    /* bottom */
+    0px -4px var(--blue-color),
+    /* left */
+    -4px 0px var(--blue-color),
+    /* right */
+    4px 0px var(--blue-color),
+    /* top-left-corner*/
+    2px 2px var(--blue-color),
+    /* bottom-left-corner */
+    2px -2px var(--blue-color),
+    /* top-left-corner */
+    -2px 2px var(--blue-color),
+    /* top-right-corner */
+    -2px -2px var(--blue-color)
+}
+
+.pixel-sdw-r:hover {
+  background-color: var(--blue-color);
+  color: var(--green-color);
+  box-shadow:
+    /* top*/
+    0px 4px var(--green-color),
+    /* bottom */
+    0px -4px var(--green-color),
+    /* left */
+    -4px 0px var(--green-color),
+    /* right */
+    4px 0px var(--green-color),
+    /* top-left-corner*/
+    2px 2px var(--green-color),
+    /* bottom-left-corner */
+    2px -2px var(--green-color),
+    /* top-left-corner */
+    -2px 2px var(--green-color),
+    /* top-right-corner */
+    -2px -2px var(--green-color)
+}
+
+.modal-content {
   color: var(--blue-color) !important;
   background-color: var(--light-green-color);
 }
-.close{
+
+.close {
   color: var(--blue-color) !important;
 
 }
-.modal-header{
-  border-bottom:none;
+
+.modal-header {
+  border-bottom: none;
+}
+
+#email-input-login{
+  margin-bottom: 0.7em;
+}
+.hide{
+  display:none !important;
+}
+
+.main-title {
+  text-decoration: none;
+  color: var(--blue-color) !important;
+}
+
+.main-title:hover {
+  text-decoration: none;
+  color: var(--green-color) !important;
+}
+
+.create-account {
+  text-decoration: none;
+  color: var(--green-color) !important;
+}
+
+.create-account:hover {
+  text-decoration: none;
+  color: var(--blue-color) !important;
 }
