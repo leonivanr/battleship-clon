@@ -21,7 +21,7 @@
 
 
 html,
-body {
+body,h1 {
   background-color: var(--light-green-color);
   color: var(--blue-color);
   height: 100%;
@@ -301,4 +301,7 @@ td {
 .create-account:hover {
   text-decoration: none;
   color: var(--blue-color) !important;
+}
+.games-title {
+  font-family: 'Press Start 2P', cursive;
 }

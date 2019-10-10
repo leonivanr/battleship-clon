@@ -5,7 +5,7 @@ const register = () => {
   $.post("/api/players", {
       email: $("#email-input-reg").val(),
       password: $("#password-input-reg").val()
-    }).done((response) => {
+    }).done(() => {
       console.log("registered!");
       setTimeout(() => {
         window.location.replace("login.html");
