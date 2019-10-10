@@ -12,7 +12,7 @@ const register = () => {
       }, 400)
     })
     .fail(error => {
-      return console.log("Status: " + error.responseJSON.status + " Error: " + error.responseJSON.error)
+        console.log(error)
     });
 }
 

@@ -21,7 +21,7 @@
 
 
 html,
-body,h1 {
+body {
   background-color: var(--light-green-color);
   color: var(--blue-color);
   height: 100%;
@@ -114,11 +114,11 @@ a:hover {
 .wrapper-leader {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
   text-align: center;
-  align-items: center;
-  justify-content: flex-start;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
 }
 
 .table-leader th,
@@ -304,4 +304,8 @@ td {
 }
 .games-title {
   font-family: 'Press Start 2P', cursive;
+}
+
+form{
+  width: auto;
 }

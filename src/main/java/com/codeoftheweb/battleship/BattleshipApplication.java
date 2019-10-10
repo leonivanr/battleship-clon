@@ -57,10 +57,10 @@ public class BattleshipApplication {
 			plyRepo.save(player3);
 			plyRepo.save(player4);
 
-			Game game1 = new Game (date1);
-			Game game2 = new Game (date2);
-			Game game3 = new Game (date3);
-			Game game4 = new Game (date4);
+			Game game1 = new Game ();
+			Game game2 = new Game ();
+			Game game3 = new Game ();
+			Game game4 = new Game ();
 
 			gameRepos.save(game1);
 			gameRepos.save(game2);

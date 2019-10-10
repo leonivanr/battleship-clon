@@ -29,10 +29,6 @@ public class Game {
         this.createdDate = new Date();
     }
 
-    public Game(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
     // G&S.
     @JsonIgnore
     public List<GamePlayer> getGameplayers() {
