@@ -47,11 +47,6 @@ public class BattleshipApplication {
 			Player player3 = new Player("kim_bauer@gmail.com",passwordEncoder().encode("tres3"));
 			Player player4 = new Player("t.almeida@ctu.gov",passwordEncoder().encode("cuatro4"));
 
-			Date date1 = new Date();
-			Date date2 = Date.from(date1.toInstant().plusSeconds(3600));
-			Date date3 = Date.from(date1.toInstant().plusSeconds(7200));
-			Date date4 = Date.from(date1.toInstant().plusSeconds(8506));
-
 			plyRepo.save(player1);
 			plyRepo.save(player2);
 			plyRepo.save(player3);
@@ -59,13 +54,9 @@ public class BattleshipApplication {
 
 			Game game1 = new Game ();
 			Game game2 = new Game ();
-			Game game3 = new Game ();
-			Game game4 = new Game ();
 
 			gameRepos.save(game1);
 			gameRepos.save(game2);
-			gameRepos.save(game3);
-			gameRepos.save(game4);
 
 			// GamePlayer creation.
 			GamePlayer gamePlayer1 = new GamePlayer(game1,player1);
@@ -179,21 +170,14 @@ public class BattleshipApplication {
 			Score score2 = new Score(player1,game1,0.5,new Date());
 			Score score3 = new Score(player1,game2,0,new Date());
 			Score score4 = new Score(player2,game1,1,new Date());
-			Score score5 = new Score(player2,game3,0.5,new Date());
-			Score score6 = new Score(player3,game4,0,new Date());
 			Score score7 = new Score(player3,game2,1,new Date());
-			Score score8 = new Score(player4,game3,0.5,new Date());
-			Score score9 = new Score(player4,game4,0,new Date());
 
 			scoreRepo.save(score1);
 			scoreRepo.save(score2);
 			scoreRepo.save(score3);
 			scoreRepo.save(score4);
-			scoreRepo.save(score5);
-			scoreRepo.save(score6);
 			scoreRepo.save(score7);
-			scoreRepo.save(score8);
-			scoreRepo.save(score9);
+
 
 		};
 	}

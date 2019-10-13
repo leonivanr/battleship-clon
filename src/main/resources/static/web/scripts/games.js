@@ -2,9 +2,24 @@ const newgameBtn = document.querySelector('#createGame');
 
 const updateGamesTable = data => {
   var htmlList = data.games.map(function (game) {
-    return '<tr><td>' + new Date(game.created_date).toLocaleString() + '</td>' + game.game_players.map(function (p) {
-      return '<td>' + p.player.email + '</td>'
-    }).join('') + '</tr>';
+    let gamePlayersHtml;
+    let joinBtn;
+    if(game.game_players.length == 1 ) {
+      gamePlayersHtml = '<td>' + game.game_players[0].player.email + '</td>' +
+      '<td>awaiting for player...</td>';
+    } else {
+      gamePlayersHtml = game.game_players.map(function (p) {
+        return '<td>' + p.player.email + '</td>'
+      }).join('');
+    }
+    if(game.game_players[0].player.id == data.player.id || game.game_players[1].player.id == data.player.id) {
+      joinBtn = '<td><form class="text-center" id="createGameForm"><input class="pixel-sdw" type="submit" id="" value="JOIN" /></form></td>'
+    }else {
+      joinBtn = '';
+    }
+
+
+    return '<tr class="mb-3"><td>' + new Date(game.created_date).toLocaleString('es-AR', { year: '2-digit', month: '2-digit', day: 'numeric' }) + '</td>' + gamePlayersHtml + joinBtn + '</tr>';
   }).join('');
   document.getElementById("game-list-table").innerHTML = htmlList;
 }
