@@ -25,7 +25,6 @@ const updateView = data => {
 
 const getGames = () => {
   $.get("/api/games").done((data) => {
-      console.log(data.player)
       if (data.player.email) {
         isLogged = true;
         verifyLogin();

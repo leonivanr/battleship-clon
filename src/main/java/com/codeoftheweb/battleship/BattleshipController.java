@@ -117,7 +117,7 @@ public class BattleshipController {
 
     private Map<String, Object> gamePlayerToDto(GamePlayer gamePlayer) {
         Map<String, Object> gameData = new LinkedHashMap<String, Object>();
-        gameData.put("id", gamePlayer.getId());
+        gameData.put("gpid", gamePlayer.getId());
         gameData.put("player", playerToDto(gamePlayer.getPlayer()));
         return gameData;
     }

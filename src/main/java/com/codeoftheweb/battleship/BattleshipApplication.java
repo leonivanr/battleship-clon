@@ -42,10 +42,10 @@ public class BattleshipApplication {
 	@Bean
 	public CommandLineRunner initData (PlayerRepo plyRepo,GameRepo gameRepos,GamePlayerRepo gameplayerRepo,ShipRepo shipRepo,SalvoRepo salvoRepo,ScoreRepo scoreRepo) {
 		return(args) -> {
-			Player player1 = new Player("j.bauer@ctu.gov", passwordEncoder().encode("uno1"));
-			Player player2 = new Player("c.obrian@ctu.gov",passwordEncoder().encode("dos2"));
-			Player player3 = new Player("kim_bauer@gmail.com",passwordEncoder().encode("tres3"));
-			Player player4 = new Player("t.almeida@ctu.gov",passwordEncoder().encode("cuatro4"));
+			Player player1 = new Player("bauer", passwordEncoder().encode("bauer"));
+			Player player2 = new Player("brian",passwordEncoder().encode("brian"));
+			Player player3 = new Player("kim",passwordEncoder().encode("kim"));
+			Player player4 = new Player("almeida",passwordEncoder().encode("almeida"));
 
 			plyRepo.save(player1);
 			plyRepo.save(player2);
