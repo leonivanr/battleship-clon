@@ -60,10 +60,28 @@ public class BattleshipController {
     }
 
     @RequestMapping("/game_view/{gamePlayerId}")
-    public Map<String, Object> getGameView(@PathVariable Long gamePlayerId) {
+    public ResponseEntity<Map<String, Object>> getGameView(@PathVariable Long gamePlayerId, Authentication authentication) {
+        if(isGuest(authentication)){
+            return new ResponseEntity<>(makeMap("error", "Paso algo"), HttpStatus.UNAUTHORIZED);
+        }
+        Player player = playerRepo.findByEmail(authentication.getName());
+        GamePlayer gamePlayer = gamePlayerRepo.findById(gamePlayerId).get();
+
+        if(player == null){
+            return new ResponseEntity<>(makeMap("error", "Paso otra cosa"), HttpStatus.UNAUTHORIZED);
+        }
+        if(gamePlayer == null){
+            return new ResponseEntity<>(makeMap("error", "Volvio a pasar NO AUTORIZADO"), HttpStatus.UNAUTHORIZED);
+        }
+        if(gamePlayer.getPlayer().getId() != player.getId()){
+            return new ResponseEntity<>(makeMap("error", "paso algo mas"), HttpStatus.CONFLICT);
+        }
         //Retrive data for the given player. /game.html?gp=1
-        GamePlayer gamePlayer = gamePlayerRepo.findById(gamePlayerId).orElse(null);
-        return getGameViewDTO(gamePlayer.getGame(), gamePlayer);
+        //GamePlayer gamePlayer = gamePlayerRepo.findById(gamePlayerId).orElse(null);
+        //getGameViewDTO(gamePlayer.getGame(), gamePlayer);
+
+        return new ResponseEntity<>(getGameViewDTO(gamePlayer.getGame(), gamePlayer),HttpStatus.OK);
+        //Retrive data for the given player. /game.html?gp=1
     }
 
     @RequestMapping(path = "/players", method = RequestMethod.POST)
@@ -79,7 +97,6 @@ public class BattleshipController {
         playerRepo.save(new Player(email, passwordEncoder.encode(password)));
         return new ResponseEntity<>("User created successfully.",HttpStatus.CREATED);
     }
-
 
     private Map<String, Object> getGameViewDTO(Game game, GamePlayer gamePlayer) {
         //DTO = combine multiple requests in one request. (JSON).
@@ -188,4 +205,9 @@ public class BattleshipController {
         return dto;
     }
 
+    private Map<String, Object> makeMap(String key, Object value){
+        Map<String, Object> map = new HashMap<>();
+        map.put(key, value);
+        return map;
+    }
 }
