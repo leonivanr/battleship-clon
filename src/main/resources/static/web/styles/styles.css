@@ -170,7 +170,7 @@ td {
 .pixel-sdw {
   background-color: var(--blue-color);
   color: var(--green-color);
-  font-size: small;
+  /* font-size: small; */
   border-radius: 0;
   padding-bottom: 3px;
   padding-top: 3px;
@@ -309,4 +309,13 @@ td {
 
 form{
   width: auto;
+}
+.join-game,
+.return-game {
+  cursor: pointer;
+}
+#gameJoined,
+#gameReEnter,
+#gameCreatedSuccess{
+  line-height: 2em;
 }

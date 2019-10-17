@@ -7,42 +7,49 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="./media/favicon/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>BATTLESHIP</title>
 </head>
 
 <body>
 
-    <div class="container d-flex flex-column align-content-center justify-content-center pt-5 ">
+    <div class="container d-flex flex-column align-content-center justify-content-center pt-5 pb-5">
+
+
         <div class="d-flex justify-content-between align-content-center">
             <a class="main-title" href="main.html">
                 <h5>BATTLESHIP</h5>
             </a>
             <h5 id="user-name">Welcome Leon! </h5>
         </div>
-        <h3 class="games-title text-center mt-4">Game List</h3>
+        <h3 class="games-title text-center mt-4">GAME LIST</h3>
         <table class="mt-4">
-            <thead class="text-center ">
+            <thead class="text-center">
                 <tr clas="mb-2">
-                    <th class="mb-2">Date</th>
-                    <th>Player 1</th>
-                    <th>Player 2</th>
-                    <th>Estate</th>
+                    <th class="mb-2"><u>DATE</u></th>
+                    <th><u>PLAYER 1</u></th>
+                    <th><u>PLAYER 2</u></th>
+                    <th><u>STATE</u></th>
                 </tr>
             </thead>
-            <tbody id="game-list-table">
+            <tbody id="game-list-table" class="text-center">
             </tbody>
         </table>
         <form class="mt-4 text-center " id="createGameForm">
             <input class="pixel-sdw" type="submit" id="createGame" value="CREATE NEW GAME" />
         </form>
+
         <!-- <h3 id="errorSignup" class="textCenter"></h3> -->
-        <!-- <h3 id="gameCreatedSuccess" class="textCenter">Game Created Successfully! Redirecting to Game Page...</h3> -->
+        <h6 id="gameCreatedSuccess" class="text-center mx-auto"><u>Game Created Successfully! <br>Redirecting to Game Page...</u></h6>
+        <h6 id="gameJoined" class="text-center mx-auto"><u>Redirecting to Game Page...</u></h6>
+        <h6 id="gameReEnter" class="text-center mx-auto"><u>Redirecting to Game Page...</u></h6>
     </div>
 
 
     <script src="scripts/jquery-3.4.1.min.js"></script>
-    <script src="scripts/bootstrap.bundle.js"></script>
+    <script src="scripts/popper.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
     <script src="scripts/games.js"></script>
 
 </body>
