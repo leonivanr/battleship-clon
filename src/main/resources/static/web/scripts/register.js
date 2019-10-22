@@ -1,15 +1,23 @@
 const registerBtn = document.querySelector("#register-btn");
 
 const register = () => {
-
-  $.post("/api/players", {
+    $.post("/api/players", {
       email: $("#email-input-reg").val(),
       password: $("#password-input-reg").val()
     }).done(() => {
       console.log("registered!");
-      setTimeout(() => {
-        window.location.replace("login.html");
-      }, 400)
+      $.post("/api/login", {
+        email: $("#email-input-reg").val(),
+        password: $("#password-input-reg").val()
+      }).done(() => {
+        console.log("logged in!");
+        setTimeout(() => {
+          window.location.replace("games.html");
+        }, 300)
+      })
+      .fail(error => {
+        return console.log("Status: " + error.responseJSON.status + " Error: " + error.responseJSON.error)
+      });
     })
     .fail(error => {
         console.log(error)
