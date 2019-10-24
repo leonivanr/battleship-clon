@@ -104,18 +104,18 @@ $('#game-list-table').on('click', '.return-game', (e) => {
   //Get gameplayer ID matching player's id. 
   let gameviewGP = games.filter(game => (game.id == gameId))[0].game_players.filter(gpl => (gpl.player.id == playerId))[0].gpid;
 
-  $.get("/api/game_view/" + gameviewGP)
-    .done(data => {
-      console.log(data);
-      gameViewUrl = "/web/game.html?gp=" + gameviewGP;
-      $('#createGameForm').hide();
-      $('#gameReEnter').show("slow").delay(2000).hide("slow");
-      setTimeout(
-        function () {
-          location.href = gameViewUrl;
-        }, 3000);
-    })
-    .fail(error => {
-      console.log(error);
-    })
+  // $.get("/api/game_view/" + gameviewGP)
+  //   .done(data => {
+  //     console.log(data);
+  gameViewUrl = "/web/game.html?gp=" + gameviewGP;
+  $('#createGameForm').hide();
+  $('#gameReEnter').show("slow").delay(2000).hide("slow");
+  //   setTimeout(
+  //     function () {
+  //       location.href = gameViewUrl;
+  //     }, 3000);
+  // })
+  // .fail(error => {
+  //   console.log(error);
+  // })
 })
